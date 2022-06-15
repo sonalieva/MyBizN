@@ -1,0 +1,41 @@
+﻿@model List<Profession>
+@{
+    ViewData["Title"] = "Index";
+    int count = 0;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 mx-auto" >
+            <a asp-action="create" class="btnm btn-primary">Create</a>
+        </div>
+        <div class="col-md-10 mx-auto">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Profession prof in Model)
+                     {
+                        count++;
+                        <tr>
+                            <th scope="row">@count</th>
+                            <td>@prof.Name</td>
+                            <td>
+                                <a asp-action="edit" asp-route-id="@prof.Id" class="btn btn-warning">Edit</a>
+                                <a asp-action="delete" asp-route-id="@prof.Id"  class="btn btn-danger sweet-delete">Delete</a>
+
+                            </td>
+                        </tr>
+                     }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
